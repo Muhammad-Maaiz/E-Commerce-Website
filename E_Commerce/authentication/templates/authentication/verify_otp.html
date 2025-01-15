@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3d4242;
+            --secondary-color: #FFFFFF;
+            --accent-color: #FF9800;
+            --hover-color: #FFC247;
+            --error-color: #d9534f;
+            --info-color: #5bc0de;
+            --text-light: #FFFFFF;
+            --text-dark: #333333;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        ::selection {
+            background-color: var(--hover-color);
+            color: white;
+        }
+
+        .container-box {
+            box-shadow: 0 8px 16px var(--shadow-color);
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background-color: var(--secondary-color);
+        }
+
+        .icon {
+            font-size: 70px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .error {
+            background-color: var(--error-color);
+            color: var(--text-light);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .info {
+            background-color: var(--info-color);
+            color: var(--text-light);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .otp-box {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .otp-input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 18px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .otp-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 5px var(--shadow-color);
+            outline: none;
+        }
+
+        .btn-verify {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-verify:hover {
+            background-color: var(--hover-color);
+            color: var(--text-dark);
+        }
+
+        .timer {
+            font-size: 16px;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            .container-box {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .otp-box {
+                gap: 10px;
+            }
+
+            .otp-input {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .otp-input {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+
+            .otp-box {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-box">
+        <div class="icon">
+            <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>OTP Verification</h3>
+        <p>Please enter the OTP sent to your registered email address.</p>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if info %}
+            <p class="info">{{ info }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="otp-box">
+                <input type="text" name="otp1" class="otp-input" maxlength="1" id="otp1" {% if remaining_time > 0 %} required {% endif %} oninput="moveToNext(this, 'otp2')">
+                <input type="text" name="otp2" class="otp-input" maxlength="1" id="otp2" {% if remaining_time > 0 %} required {% endif %} oninput="moveToNext(this, 'otp3')">
+                <input type="text" name="otp3" class="otp-input" maxlength="1" id="otp3" {% if remaining_time > 0 %} required {% endif %} oninput="moveToNext(this, 'otp4')">
+                <input type="text" name="otp4" class="otp-input" maxlength="1" id="otp4" {% if remaining_time > 0 %} required {% endif %} oninput="moveToNext(this, 'otp5')">
+                <input type="text" name="otp5" class="otp-input" maxlength="1" id="otp5" {% if remaining_time > 0 %} required {% endif %} oninput="moveToNext(this, 'otp6')">
+                <input type="text" name="otp6" class="otp-input" maxlength="1" id="otp6" {% if remaining_time > 0 %} required {% endif %}>
+            </div>
+
+            {% if remaining_time > 0 %}
+                <p class="timer">Time remaining: <span id="timer">{{ remaining_time }}</span> seconds</p>
+                <button type="submit" class="btn-verify">Verify OTP</button>
+            {% else %}
+                <button type="submit" name="resend_otp" class="btn-verify">Resend OTP</button>
+            {% endif %}
+        </form>
+    </div>
+
+    <script>
+        function moveToNext(current, nextFieldId) {
+            if (current.value.length >= 1) {
+                document.getElementsByName(nextFieldId)[0]?.focus();
+            }
+        }
+
+        let timerElement = document.getElementById('timer');
+        if (timerElement) {
+            let remainingTime = parseInt(timerElement.textContent, 10);
+            let interval = setInterval(() => {
+                if (remainingTime <= 1) {
+                    clearInterval(interval);
+                    location.reload();
+                } else {
+                    remainingTime--;
+                    timerElement.textContent = remainingTime;
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

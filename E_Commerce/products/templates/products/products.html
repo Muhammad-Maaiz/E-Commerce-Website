@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Products | Bazixo
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/products/products.css' %}">
+{% endblock %}
+
+{% block content %}
+    
+<!-- Products Section -->
+<section class="products container mt-5">
+    <h2 class="text-center mb-4">Products</h2>
+    <div class="row">
+        <!-- Loop through products -->
+        {% for product in products %}
+        <div class="col-md-4 mb-4">
+            <div class="card product-card">
+                <img src="/media/{{ product.image1 }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h4 class="card-title">{{ product.name }}</h4>
+                    <p class="card-text">Price: ${{ product.selling_price }}</p>
+                    <p class="card-text">Category: {{ product.category.name }}</p>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn card-btns">View Details</a>
+                        <a href="#" class="btn card-btns">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

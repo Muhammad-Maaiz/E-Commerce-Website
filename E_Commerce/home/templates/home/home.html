@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Home | Bazixo
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Bazixo</h1>
+        <p>Discover exclusive products with amazing deals</p>
+        <a href="#" class="btn btn-lg card-">Shop Now</a>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="products container mt-5">
+        <h2 class="text-center mb-4">Featured Products</h2>
+        <div class="row">
+            <!-- Loop through products -->
+            {% for product in featured_products %}
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="/media/{{ product.image1 }}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ product.name }}</h4>
+                        <p class="card-text">Price: ${{ product.selling_price }}</p>
+                        <p class="card-text">Category: {{ product.category.name }}</p>
+                        {% comment %} <!-- Dynamic Attributes -->
+                        {% for attribute in product.attributes.all %}
+                        <p>{{ attribute.key }}: {{ attribute.value }}</p>
+                        {% endfor %}
+                        {% endcomment %}
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn card-btns">View Details</a>
+                            <a href="#" class="btn card-btns">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Trending Products Section -->
+    <section class="products container mt-5">
+        <h2 class="text-center mb-4">Trending Products</h2>
+        <div class="row">
+            <!-- Loop through products -->
+            {% for product in trending_products %}
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="/media/{{ product.image1 }}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ product.name }}</h4>
+                        <p class="card-text">Price: ${{ product.selling_price }}</p>
+                        <p class="card-text">Category: {{ product.category.name }}</p>
+                        {% comment %} <!-- Dynamic Attributes -->
+                        {% for attribute in product.attributes.all %}
+                        <p>{{ attribute.key }}: {{ attribute.value }}</p>
+                        {% endfor %}
+                        {% endcomment %}
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn card-btns">View Details</a>
+                            <a href="#" class="btn card-btns">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="py-5"> 
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <form method="POST" class="mx-auto" style="max-width: 900px;">
+                {% csrf_token %}
+                {{ error }}
+                <!-- Full Name Field -->
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name *</label>
+                    <input
+                        type="text"
+                        class="form-control contact-name"
+                        id="fullName"
+                        name="full_name"
+                        placeholder="Enter your full name"
+                        required
+                    />
+                </div>
+
+                <!-- Email Field -->
+                <div class="mb-3">
+                    <label for="emailAddress" class="form-label">Email *</label>
+                    <input
+                        type="email"
+                        class="form-control contact-email"
+                        id="emailAddress"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    />
+                </div>
+
+                <!-- Message Field -->
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message *</label>
+                    <textarea
+                        class="form-control contact-message"
+                        id="message"
+                        name="message"
+                        rows="5"
+                        placeholder="Type your message here"
+                        required
+                    ></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button
+                        type="submit"
+                        class="btn btn-primary px-5 py-2 mt-3 custom-submit-btn"
+                    >
+                        Submit →
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Smooth Scrolling Script -->
+    <script>
+        document.querySelector("#contact-tab").addEventListener("click", function (event) {
+            event.preventDefault();
+            document.querySelector("#contact-form").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="py-5 ">
+        <div class="container">
+            <h2 class="text-center mb-4">About Us</h2>
+            <div class="row align-items-center">
+                <!-- Image Section -->
+                <div class="col-md-5 mb-4 mb-md-0">
+                    <img src="https://via.placeholder.com/500x300" alt="About Us" class="img-fluid rounded">
+                </div>
+                <!-- Text Section -->
+                <div class="col-md-6">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae luctus ex. Integer vel 
+                        malesuada eros. Duis tristique dignissim nulla at eleifend. Proinye non arcu fermentum, viverra nisl at, 
+                        sodales felis. Aenean it ste! Eum praesentye quae accusantiumit laboriosam minima blanditiis commodi provident. Laboretuee tenetur magnam animi?
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore corporis sed ratione. Quasi dolorum ipsa neque mollitia placeat ipsum praesentium.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Smooth Scrolling Script -->
+    <script>
+        // Smooth scroll for "About Us"
+        document.querySelector(".nav-link[href='#about-us']").addEventListener("click", function (event) {
+            event.preventDefault();
+            document.querySelector("#about-us").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+
+    <!-- FAQs Section -->
+    <section class="faqs container mt-5 mb-5">
+        <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+            <!-- FAQ 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqContent1" aria-expanded="true" aria-controls="faqContent1">
+                        What is your return policy?
+                    </button>
+                </h2>
+                <div id="faqContent1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        We offer a 30-day return policy for all unused products in their original packaging. Contact our support team to initiate a return.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqContent2" aria-expanded="false" aria-controls="faqContent2">
+                        Do you offer free shipping?
+                    </button>
+                </h2>
+                <div id="faqContent2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, we offer free shipping on orders above $50. For orders below $50, standard shipping charges apply.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqContent3" aria-expanded="false" aria-controls="faqContent3">
+                        What payment methods do you accept?
+                    </button>
+                </h2>
+                <div id="faqContent3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        We accept all major credit cards, debit cards, PayPal, and digital wallets like Google Pay and Apple Pay.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq4">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqContent4" aria-expanded="false" aria-controls="faqContent4">
+                        How can I track my order?
+                    </button>
+                </h2>
+                <div id="faqContent4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Once your order is shipped, we will send you a tracking link via email. You can use this link to track your order's status.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
