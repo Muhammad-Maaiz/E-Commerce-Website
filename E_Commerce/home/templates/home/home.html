@@ -60,11 +60,6 @@
                         <h4 class="card-title">{{ product.name }}</h4>
                         <p class="card-text">Price: ${{ product.selling_price }}</p>
                         <p class="card-text">Category: {{ product.category.name }}</p>
-                        {% comment %} <!-- Dynamic Attributes -->
-                        {% for attribute in product.attributes.all %}
-                        <p>{{ attribute.key }}: {{ attribute.value }}</p>
-                        {% endfor %}
-                        {% endcomment %}
                         <div class="d-flex justify-content-between">
                             <a href="#" class="btn card-btns">View Details</a>
                             <a href="#" class="btn card-btns">Add To Cart</a>

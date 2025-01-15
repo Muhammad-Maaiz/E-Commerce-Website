@@ -219,6 +219,82 @@ header {
     transform: scale(1.05);
     box-shadow: 0 8px 16px var(--shadow-color);
 }
+  
+/* Contact Section */
+#contact {
+background-color: var(--secondary-color);
+color: var(--text-dark);
+}
+
+
+/* Input Fields */
+.contact-name,
+.contact-email,
+.contact-message {
+font-size: 1rem;
+padding: 0.8rem;
+/* background-color: var(--background-color); */
+border: 1px solid var(--primary-color);
+border-radius: 4px;
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-name:focus,
+.contact-email:focus,
+.contact-message:focus {
+/* border-color: var(--accent-color); */
+border-color: var(--accent-color) !important;
+box-shadow: 0 0 5px var(--hover-color) !important;
+outline: none;
+}
+
+/* Submit Button */
+.custom-submit-btn {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-submit-btn:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+    color: var(--text-dark);
+}
+
+
+#about-us {
+    background-color: var(--secondary-color); 
+    padding: 50px 0;
+}
+
+
+#about-us p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-dark); 
+}
+
+#about-us img {
+    box-shadow: 0 4px 8px var(--shadow-color); 
+}
+
+.custom-btn {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn:hover {    
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+    color: var(--text-dark);
+}
 
 
 /* Faq section styling */
