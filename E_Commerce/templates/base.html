@@ -32,11 +32,11 @@
             <!-- Navigation Links for Desktop -->
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto desktop-only">
-                    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
+                    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="{% url 'products' %}" class="nav-link">Products</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Favorites</a></li>
-                    <li class="nav-item"><a href="#about-us" class="nav-link">About Us</a></li>
-                    <li class="nav-item"><a id="contact-tab" href="#contact-form" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="{% url 'about_us' %}" class="nav-link">About Us</a></li>
+                    <li class="nav-item"><a href="{% url 'contact_us' %}" class="nav-link">Contact</a></li>
                 </ul>
 
                 <!-- Search Bar for Desktop -->
@@ -71,11 +71,11 @@
     <!-- Sidebar for Small Screens -->
     <div id="sidebar">
         <a class="navbar-brand" href="#">Bazixo</a>
-        <a href="#"><i class="fas fa-home"></i>Home</a>
-        <a href="#"><i class="fas fa-box"></i>Products</a>
+        <a href="{% url 'home' %}"><i class="fas fa-home"></i>Home</a>
+        <a href="{% url 'products' %}"><i class="fas fa-box"></i>Products</a>
         <a href="#"><i class="fas fa-heart"></i>Favorites</a>
-        <a href="#about-us"><i class="fas fa-info-circle"></i>About Us</a>
-        <a id="contact-tab" href="#contact-form"><i class="fas fa-envelope"></i>Contact</a>
+        <a href="{% url 'about_us' %}"><i class="fas fa-info-circle"></i>About Us</a>
+        <a href="{% url 'contact_us' %}"><i class="fas fa-envelope"></i>Contact</a>
     </div>
 
     <script>
