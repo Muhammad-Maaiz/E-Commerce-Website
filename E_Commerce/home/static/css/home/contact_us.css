@@ -193,7 +193,17 @@ header {
     color: var(--text-dark);
     }
     
+
+    .error {
+        color: var(--text-light);
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        background-color: #d9534f;
+        text-align: center;
+    }
     
+
     /* Input Fields */
     .contact-name,
     .contact-email,

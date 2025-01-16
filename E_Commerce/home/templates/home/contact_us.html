@@ -17,7 +17,11 @@
             <h2 class="text-center mb-4">Contact Us</h2>
             <form method="POST" class="mx-auto" style="max-width: 900px;">
                 {% csrf_token %}
-                {{ error }}
+
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
+                
                 <!-- Full Name Field -->
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Full Name *</label>

@@ -25,18 +25,18 @@ def contact_us(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
 
-        print(full_name, email, message, request.user)
+
         if not request.user.is_authenticated:
             return render(request, 'home/contact_us.html', {"error": "You need to log in to submit the form!"})
-            # return redirect('login')  # Redirect to login page if user is not logged in
 
-        save_form_info = ContactForm.objects.create(
-            user = request.user,
-            full_name = full_name,
-            email = email,
-            message = message
+        # Save form data to the database
+        ContactForm.objects.create(
+            user=request.user,
+            full_name=full_name,
+            email=email,
+            message=message
         )
-        return redirect('home')
+        return redirect('contact_us')
 
     return render(request, 'home/contact_us.html')
 
