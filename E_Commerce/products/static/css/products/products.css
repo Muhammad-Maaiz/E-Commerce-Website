@@ -186,7 +186,6 @@ header {
     color: var(--accent-color);
 }
 
-
 /* Cards */
 .card {
     margin-bottom: 2rem;
@@ -198,7 +197,6 @@ header {
     object-fit: cover; /* Ensures the image maintains aspect ratio and fills the area */
 }
 
-.category-card,
 .product-card {
     border: none;
     border-radius: 8px;
@@ -206,12 +204,55 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.category-card:hover,
+.product-card p {
+    margin-top: 10px;
+}
+
+.card-btns {
+    margin-bottom: 10px;
+    width: 120px;
+}
+
 .product-card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px var(--shadow-color);
 }
 
+.icon-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-container i {
+    cursor: pointer;
+    font-size: 1.6rem; /* Increased icon size */
+    transition: color 0.3s ease;
+}
+
+.icon-eye {
+    color: brown;
+}
+
+.icon-eye:hover {
+    color: darkorange; /* Hover color for eye icon */
+}
+
+.icon-heart {
+    color: red;
+}
+
+.icon-heart:hover {
+    color: rgb(235, 72, 72); /* Hover color for heart icon */
+}
+
+.card-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensures name and icons are perfectly aligned */
+    margin-top: 10px;
+    margin-bottom: 0; /* Removes extra spacing */
+}
 
 /* Footer */
 footer {

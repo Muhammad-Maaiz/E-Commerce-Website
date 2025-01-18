@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include("authentication.urls")),
     path('', include('home.urls')), 
     path('', include("products.urls")),
+    path('', include('wishlist.urls')),
 ]
 
 # Add media settings

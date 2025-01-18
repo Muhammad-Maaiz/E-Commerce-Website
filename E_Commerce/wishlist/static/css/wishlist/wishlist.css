@@ -187,13 +187,19 @@ header {
 }
 
 
-/* Hero Section */
-.hero {
-    background: url('https://via.placeholder.com/1500x700') center/cover no-repeat;
+/* if not wishlists */
+
+.error {
     color: var(--text-light);
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #d9534f;
     text-align: center;
-    padding: 6rem 1rem;
 }
+
+
 
 /* Cards */
 .card {
@@ -219,7 +225,7 @@ header {
 
 .card-btns {
     margin-bottom: 10px;
-    width: 135px;
+    width: 120px;
 }
 
 .product-card:hover {
@@ -247,11 +253,11 @@ header {
     color: darkorange; /* Hover color for eye icon */
 }
 
-.icon-heart {
+.icon-trash {
     color: red;
 }
 
-.icon-heart:hover {
+.icon-trash:hover {
     color: rgb(235, 72, 72); /* Hover color for heart icon */
 }
 
@@ -262,35 +268,6 @@ header {
     margin-top: 10px;
     margin-bottom: 0; /* Removes extra spacing */
 }
-
-
-/* Faq section styling */
-.accordion-item {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-dark); /* Dark text color for readability */
-    margin-bottom: 40px;
-    /* Adjust this value for more or less space */
-}
-
-.accordion-body {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-dark); /* Dark text color for readability */
-    margin-top: 10px;
-    /* Adjust this value for spacing between question and answer */
-}
-
-.accordion-button {
-    background-color: var(--secondary-color);
-    color: var(--text-dark);
-}
-
-.accordion-button:not(.collapsed) {
-    background-color: var(--accent-color);
-    color: var(--text-light);
-}
-
 
 /* Footer */
 footer {

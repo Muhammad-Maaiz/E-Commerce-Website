@@ -2,38 +2,43 @@
 {% load static %}
 
 {% block title %}
-    Products | Bazixo
+    Wishlist | Bazixo
 {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/products/products.css' %}">
+    <link rel="stylesheet" href="{% static 'css/wishlist/wishlist.css' %}">
 {% endblock %}
 
 {% block content %}
     
-<!-- Products Section -->
+<!-- Wishlist Section -->
 <section class="products container mt-5">
-    <h2 class="text-center mb-4">Products</h2>
+    {% if not wishlist %}
+        <div class="text-align-center">
+        <p class="error">No Wishlists</p>
+        </div>
+
+    {% else %}
+    <h2 class="text-center mb-4">Wishlist</h2>
     <div class="row">
         <!-- Loop through products -->
-        {% for product in products %}
+        {% for product in wishlist %}
         <div class="col-md-4 mb-4">
             <div class="card product-card">
-                <img src="/media/{{ product.image1 }}" class="card-img-top" alt="{{ product.name }}">
+                <img src="/media/{{ product.product.image1 }}" class="card-img-top" alt="{{ product.name }}">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="card-title">{{ product.name }}</h4>
+                        <h4 class="card-title">{{ product.product.name }}</h4>
                         <div class="icon-container">
                             <i class="fa fa-eye icon-eye" title="View Details"></i>
-                            {% comment %} <i href="{% url 'add_to_wishlist' product.id %}" class="fa fa-heart icon-heart" title="Add to Wishlist"></i> {% endcomment %}
-                            <a href="{% url 'add_to_wishlist' product.id %}">
-                                <i class="fa fa-heart icon-heart" title="Add to Wishlist"></i>
+                            <a href="{% url 'remove_from_wishlist' product.product.id %}">
+                                <i class="fa fa-trash icon-trash" title="Add to Wishlist"></i>
                             </a>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <p class="card-text">Price: ${{ product.selling_price }}</p>
-                        <p class="card-text">Category: {{ product.category.name }}</p>
+                        <p class="card-text">Price: ${{ product.product.selling_price }}</p>
+                        <p class="card-text">Category: {{ product.product.category.name }}</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <a href="#" class="btn card-btns">Add To Cart</a>
@@ -44,6 +49,7 @@
         </div>
         {% endfor %}
     </div>
+    {% endif %}
 </section>
 
 {% endblock %}
