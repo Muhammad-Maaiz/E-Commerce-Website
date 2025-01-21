@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ product.name }} | Bazixo
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/products/product_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="product-detail-container">
+    <!-- Image Gallery -->
+    <div class="image-gallery">
+        <!-- Main Image -->
+        <div class="main-image">
+            <img id="mainImage" src="{{ product.image1.url }}" alt="{{ product.name }}">
+        </div>
+        <!-- Thumbnails -->
+        <div class="thumbnail-images">
+            <img class="thumbnail active" src="{{ product.image1.url }}" alt="{{ product.name }}" onclick="updateMainImage(this)">
+            {% if product.image2 %}
+            <img class="thumbnail" src="{{ product.image2.url }}" alt="{{ product.name }}" onclick="updateMainImage(this)">
+            {% endif %}
+            {% if product.image3 %}
+            <img class="thumbnail" src="{{ product.image3.url }}" alt="{{ product.name }}" onclick="updateMainImage(this)">
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Product Information -->
+    <div class="product-info">
+        <h1 class="product-name">{{ product.name }}</h1>
+        <p class="product-category">Category: <span>{{ product.category.name }}</span></p>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">Price: ${{ product.selling_price }}</p>
+        
+        <div class="product-attributes">
+            <ul>
+                {% for attribute in attributes %}
+                <li>{{ attribute.key }}: {{ attribute.value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn add-to-cart">Buy Now</button>
+    </div>
+</div>
+
+<script>
+    function updateMainImage(thumbnail) {
+        // Update main image source
+        document.getElementById("mainImage").src = thumbnail.src;
+
+        // Highlight active thumbnail
+        const thumbnails = document.querySelectorAll(".thumbnail");
+        thumbnails.forEach((thumb) => thumb.classList.remove("active"));
+        thumbnail.classList.add("active");
+    }
+</script>
+{% endblock %}

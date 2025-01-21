@@ -219,7 +219,15 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.card-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
 .product-card p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
     margin-top: 10px;
 }
 
@@ -236,7 +244,7 @@ header {
 .icon-container {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 23px;
 }
 
 .icon-container i {
@@ -268,6 +276,7 @@ header {
     margin-top: 10px;
     margin-bottom: 0; /* Removes extra spacing */
 }
+
 
 /* Footer */
 footer {

@@ -1,17 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
-from django.contrib.auth.decorators import login_required
 
-
-# @login_required(login_url='login')
-# def products(request):
-#     products = Product.objects.prefetch_related('attributes').all()
-
-#     context = {
-#         "products": products,
-#     }
-
-#     return render(request, "products/home.html", context)
 
 def products(request):
     all_products = Product.objects.all()
@@ -21,3 +10,17 @@ def products(request):
     }
     return render(request, 'products/products.html', context)
 
+
+from django.shortcuts import get_object_or_404, render
+
+# Display all product details on the product detail page
+def product_details(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    attributes = product.attributes.all()
+
+    context = {
+        "product": product,
+        "attributes": attributes,
+    }
+
+    return render(request, "products/product_detail.html", context)
