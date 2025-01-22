@@ -95,16 +95,18 @@ p {
 
 .btn-verify {
     background-color: var(--accent-color);
-    color: white;
+    color: var(--secondary-color);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-verify:hover {
     background-color: var(--hover-color);
     color: var(--text-dark);
+    transform: scale(1.05);
 }
 
 .timer {

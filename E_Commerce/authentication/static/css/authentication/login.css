@@ -76,11 +76,14 @@ h3 {
 
 .btn-login {
     background-color: var(--accent-color);
-    color: white;
+    color: var(--secondary-color);
+    transition: background-color 0.3s ease, transform 0.2s ease;    
 }
 
 .btn-login:hover {
     background-color: var(--hover-color);
+    color: var(--text-dark);
+    transform: scale(1.05);
 }
 
 .error {
