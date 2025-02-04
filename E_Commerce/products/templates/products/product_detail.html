@@ -33,20 +33,21 @@
     <div class="product-info">
         <h1 class="product-name">{{ product.name }}</h1>
         <p class="product-category">Category: <span>{{ product.category.name }}</span></p>
-        <p class="product-description">{{ product.description }}</p>
+        <p class="product-description">{{ product.description | linebreaks }}
+        </p>
         <p class="product-price">Price: {{ product.selling_price }}</p>
         
         <div class="product-attributes">
             <ul>
                 {% for attribute in attributes %}
-                <li>{{ attribute.key }}: {{ attribute.value }}</li>
+                <li><b>{{ attribute.key }}</b>: {{ attribute.value }}</li>
                 {% endfor %}
             </ul>
         </div>
 
         
-        <button class="btn add-to-cart">Add to Cart</button>
-        <button class="btn add-to-cart">Buy Now</button>
+        <a href="{% url 'add_to_cart' product.id %}" class="btn add-to-cart">Add to Cart</a>
+        <a href="#" class="btn add-to-cart">Buy Now</a>
     </div>
 </div>
 

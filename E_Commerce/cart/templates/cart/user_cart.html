@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Your Shopping Cart | Bazixo
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/cart/user_cart.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section>
+<div class="cart-container">
+    <div class="card cart-card">
+        <div class="shopping-cart-header">
+            <h2>{% if cart_items %}Your Cart{% else %}No Cart Added{% endif %}</h2>
+            <p>{{ cart_items|length }} Items</p>
+        </div>
+        <!-- cards start -->
+        {% for product in cart_items %}
+        <div class="cart-item">
+            <img src="/media/{{ product.product.image1 }}" alt="{{ product.product.name }}">
+            <div class="cart-item-info">
+                <h5>{{ product.product.name|truncatechars:15 }}</h5>
+                <span>Category: {{ product.product.category.name }}</span>
+                <span>Price: {{ product.product.selling_price }}</span>
+                <!-- Quantity btns and field -->
+                <div class="quantity-controls-wrapper">
+                    <div class="quantity-controls">
+                        <form method="post" action="{% url 'decrease_quantity' product.id %}">
+                            {% csrf_token %}
+                            <button type="submit">-</button>
+                        </form>
+                        <input type="text" value="{{ product.quantity }}" readonly>
+                        <form method="post" action="{% url 'increase_quantity' product.id %}">
+                            {% csrf_token %}
+                            <button type="submit">+</button>
+                        </form>
+                    </div>
+                    <!-- Remove icon btn -->
+                    <a href="{% url 'remove_from_cart' product.product.id  %}" class="remove-btn">
+                        <i class="fa fa-trash" title="Remove from cart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- end cards -->
+    </div>
+    <div class="card summary-card">
+        <h2>Order Summary</h2>
+        <div class="summary-item"><span>Subtotal</span><span>Rs. {{ subtotal|floatformat:2 }}</span></div>
+        <div class="summary-item"><span>Delivery Charges</span><span>Rs. {{ delivery_charges|floatformat:2 }}</span></div>
+        <div class="summary-item"><span>Tax (3%)</span><span>Rs. {{ tax|floatformat:2 }}</span></div>
+        <div class="total-cost"><span>Total</span><span>Rs. {{ total|floatformat:2 }}</span></div>
+        <button class="checkout-btn" onclick="window.location.href='{% url 'confirm_order' %}'">Checkout</button> 
+               
+        <a href="#" onclick="window.history.back(); return false;" class="continue-shopping">
+            <i class="fas fa-arrow-left"></i> Continue Shopping
+        </a>
+    </div>
+
+</div>
+</section>
+
+{% endblock %}

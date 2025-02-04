@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Order Success | Cartobuz
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/orders/order_success.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="success-section">
+    <div class="success-card">
+        <h2>Thanks for Shopping!</h2>
+        <p>Your order has been successfully placed. We'll deliver it to you soon!</p>
+        <a href="{% url 'home' %}" class="btn home-btn">Go to Home</a>
+    </div>
+</section>
+{% endblock %}

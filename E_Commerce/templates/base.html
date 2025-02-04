@@ -26,7 +26,7 @@
                 <button class="navbar-toggler mobile-only" type="button" onclick="openSidebar()">
                     <span class="fas fa-bars"></span>
                 </button>
-                <a class="navbar-brand ms-2" href="{% url 'home' %}">Bazixo</a>
+                <a class="navbar-brand ms-2" href="{% url 'home' %}">Cartobuz</a>
             </div>
 
             <!-- Navigation Links for Desktop -->
@@ -48,14 +48,14 @@
                 <!-- User and Cart Icons for Desktop -->
                 <div class="d-flex align-items-center desktop-only">
                     <a href="#" class="icon-btn"><i class="fas fa-user-circle"></i></a>
-                    <a href="#" class="icon-btn"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="{% url 'user_cart' %}" class="icon-btn"><i class="fas fa-shopping-cart"></i></a>
                 </div>
             </div>
 
             <!-- Right Side Icons for Mobile -->
             <div class="mobile-icons mobile-only">
                 <a href="#" class="icon-btn"><i class="fas fa-user-circle"></i></a>
-                <a href="#" class="icon-btn"><i class="fas fa-shopping-cart"></i></a>
+                <a href="{% url 'user_cart' %}" class="icon-btn"><i class="fas fa-shopping-cart"></i></a>
             </div>
         </nav>
 
@@ -70,7 +70,7 @@
 
     <!-- Sidebar for Small Screens -->
     <div id="sidebar">
-        <a class="navbar-brand" href="{% url 'home' %}">Bazixo</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Cartobuz</a>
         <a href="{% url 'home' %}"><i class="fas fa-home"></i>Home</a>
         <a href="{% url 'products' %}"><i class="fas fa-box"></i>Products</a>
         <a href="{% url 'wishlist' %}"><i class="fas fa-heart"></i>Wishlist</a>
@@ -100,11 +100,11 @@
         }
     </script>
 
-
-    {% block content %}
-    
-    {% endblock %}
-
+    <main>
+        {% block content %}
+        
+        {% endblock %}
+    </main>
 
 
 
@@ -148,7 +148,7 @@
                 </div>
             </div>
             <hr>
-            <p class="text-center mb-0">&copy; 2024 E-Commerce | All Rights Reserved</p>
+            <p class="text-center mb-0">&copy; 2025 Cartobuz | All Rights Reserved</p>
         </div>
     </footer>
     

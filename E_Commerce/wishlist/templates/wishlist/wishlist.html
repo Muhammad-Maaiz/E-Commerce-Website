@@ -25,7 +25,7 @@
         {% for product in wishlist %}
         <div class="col-md-4 mb-4">
             <div class="card product-card">
-                <img src="/media/{{ product.product.image1 }}" class="card-img-top" alt="{{ product.name }}">
+                <img src="/media/{{ product.product.image1 }}" class="card-img-top" alt="{{ product.product.name }}">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="card-title">{{ product.product.name|truncatechars:15 }}</h5>
@@ -43,8 +43,8 @@
                         <p class="card-text">Category: {{ product.product.category.name }}</p>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <a href="#" class="btn card-btns">Add To Cart</a>
-                        <a href="#" class="btn card-btns">Buy Now</a>
+                        <a href="{% url 'add_to_cart' product.product.id %}" class="btn card-btns">Add To Cart</a>
+                        <a href="{% url 'buy_now' product.product.id %}" class="btn card-btns">Buy Now</a>
                     </div>
                 </div>
             </div>

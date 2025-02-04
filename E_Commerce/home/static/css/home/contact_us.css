@@ -194,54 +194,47 @@ header {
     }
     
 
-    .error {
-        color: var(--text-light);
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        background-color: #d9534f;
-        text-align: center;
-    }
-    
+.error {
+    color: var(--text-light);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #d9534f;
+    text-align: center;
+}
 
-    /* Input Fields */
-    .contact-name,
-    .contact-email,
-    .contact-message {
+.card {
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.form-label {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.contact-name, .contact-number, .contact-email, .contact-message {
     font-size: 1rem;
     padding: 0.8rem;
-    /* background-color: var(--background-color); */
-    border: 1px solid var(--primary-color);
-    border-radius: 4px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .contact-name:focus,
-    .contact-email:focus,
-    .contact-message:focus {
-    /* border-color: var(--accent-color); */
-    border-color: var(--accent-color) !important;
-    box-shadow: 0 0 5px var(--hover-color) !important;
-    outline: none;
-    }
-    
-    /* Submit Button */
-    .custom-submit-btn {
-        background-color: var(--accent-color);
-        color: var(--text-light);
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    
-    .custom-submit-btn:hover {
-        background-color: var(--hover-color);
-        transform: scale(1.05);
-        color: var(--text-dark);
-    }
-    
+    border-radius: 5px;
+    border: 1px solid var(--shadow-color);
+}
 
+.contact-name:focus, .contact-number:focus, .contact-email:focus, .contact-message:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--hover-color);
+    outline: none;
+}
+
+.custom-submit-btn {
+    font-size: 1rem;
+    background-color: var(--accent-color);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.custom-submit-btn:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.1);
+}
 
 
 /* Footer */

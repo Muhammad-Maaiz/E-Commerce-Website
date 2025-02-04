@@ -9,6 +9,8 @@ urlpatterns = [
     path('', include('home.urls')), 
     path('', include("products.urls")),
     path('', include('wishlist.urls')),
+    path('', include('cart.urls')),
+    path('', include('orders.urls')),
 ]
 
 # Add media settings
