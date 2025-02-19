@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Search | Cartobuz
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home/search_results.css' %}">
+{% endblock %}
+
+{% block content %}
+    
+<!-- Products Section -->
+<section class="products container mt-5">
+    <div class="row">
+        {% if products %}
+            <h2 class="text-center mb-4">Search Result: {{ query|capfirst }}</h2>
+            <!-- Loop through products -->
+            {% for product in products %}
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="/media/{{ product.image1 }}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title">{{ product.name|truncatechars:15 }}</h5>
+                            <div class="icon-container">
+                                <a href="{% url 'product_details' product.id %}">
+                                <i class="fa fa-eye icon-eye" title="View Details"></i>
+                                </a>
+                                <a href="{% url 'add_to_wishlist' product.id %}">
+                                    <i class="fa fa-heart icon-heart" title="Add to Wishlist"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">Price: {{ product.selling_price }}</p>
+                            <p class="card-text">Category: {{ product.category.name }}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'add_to_cart' product.id %}" class="btn card-btns">Add To Cart</a>
+                            <a href="{% url 'buy_now' product.id %}" class="btn card-btns">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <h2 class="text-center mb-4">No Result Found</h2>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

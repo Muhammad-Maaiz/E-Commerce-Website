@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, ProductAttribute
+from .models import Category, Product, ProductAttribute, Review
 
 # Register Category Model
 @admin.register(Category)
@@ -24,3 +24,4 @@ class ProductAdmin(admin.ModelAdmin):
         }),
     )
 
+admin.site.register(Review)

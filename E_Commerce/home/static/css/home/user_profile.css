@@ -25,6 +25,7 @@ h2 {
     font-size: 2rem;
     color: var(--primary-color);
     font-weight: bold;
+    text-align: center;
 }
 
 /* newslatter h2 heading white color because*/
@@ -206,131 +207,136 @@ header {
 }
 
 
-/* Product Card */
-.product-card {
-    border: none;
+/* User profile page styling */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 15px;
+}
+
+.profile-card, .orders-card {
+    background: var(--secondary-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
     border-radius: 10px;
-    box-shadow: 0 4px 8px var(--shadow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 15px; /* Reduced spacing */
     padding: 15px;
 }
 
-.product-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
+.profile-card {
+    text-align: center;
+    margin-bottom: 10px; /* Reduced gap */
 }
 
-.product-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px var(--shadow-color);
-}
-
-/* Product Details */
-.card-body {
-    padding: 15px 10px;
-    text-align: left;
-}
-
-.card-title {
-    font-size: 1.5rem;
+.profile-header {
+    padding: 10px;
+    font-size: 1.8rem;
     font-weight: bold;
-    color: var(--primary-color);
-}
-
-.rating {
-    font-size: 1rem;
-    color: var(--accent-color);
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin: 5px 0;
 }
 
-.star-gold {
-    color: gold;
-}
-
-.star-grey {
-    color: lightgray;
-}
-
-.product-price {
-    font-size: 1rem;
-    color: var(--primary-color);
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-/* Buttons */
-.view-btn {
+.logout-btn {
     background-color: var(--accent-color);
     color: var(--text-light);
-    border-radius: 5px;
     padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.view-btn:hover {
-    background-color: var(--hover-color);
+.logout-btn:hover {
     color: var(--text-dark);
-    transform: scale(1.05);
+    background-color: var(--hover-color);
+    transform: scale(1.05);        
 }
 
-/* Heart Icon Styling */
-.icon-heart {
-    font-size: 1.6rem;
-    color: rgb(254, 54, 54);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgb(254, 54, 54); /* Border added */
+.date-header {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
     border-radius: 5px;
-    padding: 5px;
+    margin: 8px 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Hover Effect */
-.icon-heart:hover {
-    color: white; /* Icon turns white */
-    background-color: rgb(254, 54, 54); 
+.user-details {
+    padding: 10px;
+    text-align: left;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .product-card {
-        margin-bottom: 20px;
-    }
-
-    .view-btn {
-        text-align: center;
-    }
-
-    .icon-heart {
-        font-size: 1.8rem;
-    }
+.user-details p {
+    margin: 8px 0;
+    font-size: 1rem;
 }
 
-@media (max-width: 480px) {
-    .card-title {
-        font-size: 1.2rem;
+.user-details p strong {
+    color: var(--primary-color);
+}
+
+.orders-card h2 {
+    margin-bottom: 15px; /* Increased spacing for better look */
+}
+
+.orders-list {
+    padding: 15px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--shadow-color);
+    padding: 10px 0;
+    font-size: 1rem;
+}
+
+.order-total {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 576px) {
+    .profile-card, .orders-card {
+        padding: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
-    .rating {
+    .profile-header {
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+
+    .user-details {
+        padding: 10px;
+    }
+
+    .user-details p {
         font-size: 0.9rem;
     }
 
-    .product-price {
+    .order-item {
+        font-size: 0.9rem;
+    }
+
+    .order-total {
         font-size: 1rem;
     }
 
-    .view-btn {
-        padding: 8px 15px;
-    }
-
-    .icon-heart {
-        font-size: 1.5rem;
+    .date-header {
+        width: 100%;
+        font-size: 0.85rem;
+        padding: 6px;
     }
 }
-
 
 
 /* Footer */

@@ -6,6 +6,7 @@ from products.models import Product
 class Order(models.Model):
     STATUS_CHOICES = [
         ('Pending', 'Pending'),
+        ('Shipped', 'Shipped'),
         ('Delivered', 'Delivered'),
         ('Canceled', 'Canceled'),
     ]
@@ -16,6 +17,14 @@ class Order(models.Model):
     delivery_charges = models.DecimalField(max_digits=10, decimal_places=2, default=300.00, editable=False)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Pending')
+    is_verified = models.BooleanField(default=False) 
+
+    def save(self, *args, **kwargs):
+        if self.status == "Delivered":  
+            self.is_verified = True
+        else:
+            self.is_verified = False
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Order {self.id} by {self.user.username}"

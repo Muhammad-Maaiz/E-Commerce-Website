@@ -1,21 +1,21 @@
+{% extends "base2.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignUp</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+{% block title %}
+    Sign Up | Cartobuz
+{% endblock %}
+
+{% block css %}
     <link rel="stylesheet" href="{% static 'css/authentication/signup.css' %}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <div class="container-box">
         <div class="image-box">
             <img src="login.webp" alt="Signup" loading="fast">
         </div>
         <div class="form-box">
-            <h3>Sign Up Here!</h3>
+            <h2>Sign Up Here!</h2>
             <form method="post">
                 {% csrf_token %}
                 {% if error %}
@@ -23,15 +23,15 @@
                 {% endif %}
 
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username" class="form-label">Username</label>
                     <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" class="form-label">Email</label>
                     <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password" class="form-label">Password</label>
                     <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
                 </div>
                 <button type="submit" class="btn btn-login btn-block">Sign Up</button>
@@ -41,5 +41,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

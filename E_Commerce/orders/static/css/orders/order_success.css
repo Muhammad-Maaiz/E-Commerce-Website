@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'popins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
     background-color: var(--secondary-color);
 }
@@ -22,7 +22,7 @@ body {
 
 /* Universal h2 Headings color */
 h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: var(--primary-color);
     font-weight: bold;
 }
@@ -66,7 +66,7 @@ header {
 }
 
 .navbar-brand {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: var(--accent-color);
 }
@@ -137,6 +137,25 @@ header {
     color: var(--accent-color);
 }
 
+
+.login-btn {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    width: 70px;
+    padding: 6px;
+    margin-left: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+    color: var(--text-dark);
+    background-color: var(--hover-color);
+    transform: scale(1.05);        
+}
+
 .navbar-toggler .fas.fa-bars {
     color: var(--secondary-color);
 }
@@ -187,6 +206,7 @@ header {
 }
 
 
+
 /* Success card styling */
 .success-section {
     display: flex;
@@ -220,10 +240,10 @@ header {
     color: var(--text-light);
     text-decoration: none;
     padding: 10px;
-    /* border-radius: 8px; */
-    font-size: 1rem;
+    border-radius: 5px;
+    /* font-size: 1rem; */
     transition: background-color 0.3s ease;
-    width: 40%;
+    width: 120px;
 }
 
 .success-card .home-btn:hover {
@@ -314,7 +334,7 @@ footer a:hover {
     }
 
     .search-bar input {
-        width: 850px;
+        width: 290px;
         padding: 5px;
         border: 1px solid var(--secondary-color);
         border-radius: 4px;
@@ -342,6 +362,13 @@ footer a:hover {
     /* Hide Desktop-Only Elements */
     .desktop-only {
         display: none !important;
+    }
+
+    footer .newsletter input[type="email"] {
+        width: 210px;
+        padding: 5px;
+        border: 1px solid var(--secondary-color);
+        border-radius: 4px;
     }
 }
 

@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'popins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
     background-color: var(--secondary-color);
 }
@@ -33,6 +33,7 @@ h2 {
 }
 
 /* Universal Button Styles */
+button,
 .btn,
 .card-btns,
 .subscribe {
@@ -44,6 +45,7 @@ h2 {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+button:hover,
 .btn:hover,
 .card-btns:hover,
 .subscribe:hover {
@@ -64,7 +66,7 @@ header {
 }
 
 .navbar-brand {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: var(--accent-color);
 }
@@ -135,6 +137,25 @@ header {
     color: var(--accent-color);
 }
 
+
+.login-btn {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    width: 70px;
+    padding: 6px;
+    margin-left: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+    color: var(--text-dark);
+    background-color: var(--hover-color);
+    transform: scale(1.05);        
+}
+
 .navbar-toggler .fas.fa-bars {
     color: var(--secondary-color);
 }
@@ -183,7 +204,6 @@ header {
 #sidebar a:hover {
     color: var(--accent-color);
 }
-
 
 
 /* Cart Page styling */
@@ -394,7 +414,6 @@ header {
 }
 
 
-
 /* Footer */
 footer {
     background-color: var(--primary-color);
@@ -477,7 +496,7 @@ footer a:hover {
     }
 
     .search-bar input {
-        width: 850px;
+        width: 290px;
         padding: 5px;
         border: 1px solid var(--secondary-color);
         border-radius: 4px;
@@ -505,6 +524,13 @@ footer a:hover {
     /* Hide Desktop-Only Elements */
     .desktop-only {
         display: none !important;
+    }
+
+    footer .newsletter input[type="email"] {
+        width: 210px;
+        padding: 5px;
+        border: 1px solid var(--secondary-color);
+        border-radius: 4px;
     }
 }
 

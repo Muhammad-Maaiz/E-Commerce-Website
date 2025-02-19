@@ -4,10 +4,10 @@ from .models import Order, OrderItem, DeliveryDetail
 
 class OrderItemInline(admin.TabularInline):  
     model = OrderItem
-    extra = 0  # "Add another" button hatane ke liye
+    extra = 0  
     max_num = 0
-    can_delete = False  # Delete option disable karne ke liye
-    readonly_fields = ('product', 'quantity', 'price', 'item_total')  # Read-only fields
+    can_delete = False  
+    readonly_fields = ('product', 'quantity', 'price', 'item_total')  
 
 
 class DeliveryDetailInline(admin.StackedInline):  
@@ -19,11 +19,9 @@ class DeliveryDetailInline(admin.StackedInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'created_at', 'tax', 'delivery_charges',  'total_amount', 'status')
+    list_display = ('id', 'user', 'tax', 'delivery_charges',  'total_amount', 'status', 'created_at')
     list_filter = ('status', 'created_at')
     search_fields = ('user__username', 'id')
-    fields = ('user', 'tax', 'delivery_charges', 'total_amount', 'status')
+    fields = ('user', 'tax', 'delivery_charges', 'total_amount', 'status', 'is_verified')
     readonly_fields = ('user','tax', 'delivery_charges', 'total_amount')
-    inlines = [OrderItemInline, DeliveryDetailInline]  # Inline models display honge
-
-
+    inlines = [OrderItemInline, DeliveryDetailInline]  

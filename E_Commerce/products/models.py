@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)  # Name of the category (e.g., Phone, Clothes)
@@ -25,6 +26,29 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def average_rating(self):
+        ratings = self.reviews.all()
+        if ratings.exists():
+            return round(sum([review.rating for review in ratings]) / ratings.count(), 1)
+        return 0
+
+    def __str__(self):
+        return self.name
+
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField()  # 1 to 5
+    review_text = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('product', 'user')  # Ensure a user can only review a product once
+
+    def __str__(self):
+        return f"{self.user.username} - {self.product.name} ({self.rating} stars)"
 
 
 # Dynamic Attributes for Products

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Your Profile | Cartobuz
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home/user_profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+        
+    <!-- User Profile Card -->
+    <div class="profile-card">
+        <div class="profile-header">
+            <h2>Your Profile</h2>
+            <a href="{% url 'logout' %}" class="logout-btn btn">Logout</a>
+        </div>
+        <div class="user-details">
+
+            <p><strong>Username: </strong>{{ user.username }}</p>
+            <p><strong>Email: </strong>{{ user.email }}</p>
+            <p><strong>Last Login: </strong>{{ user.last_login|date:"d M Y, h:i A" }}</p>
+        </div>
+    </div>
+
+    <!-- Recent Orders Card -->
+    <div class="orders-card">
+        {% if orders %}
+        <h2>Recent Orders</h2>
+        
+        {% for order in orders %}
+                <div class="date-header">{{ order.created_at|date:"d M Y, h:i A" }}</div>
+                <div class="orders-list">
+                    {% for item in order.order_items.all %}
+                        <div class="order-item">
+                            <span>{{ item.product.name|truncatechars:13 }}</span>
+                            <span>Rs.{{ item.price }} | Qty: {{ item.quantity }}</span>
+                        </div>
+                    {% endfor %}
+                    <div class="order-total">
+                        Total: {{ order.total_amount }} | Status: {{ order.status }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No orders found.</p>
+            {% comment %} <h2>Recent Orders</h2> {% endcomment %}
+        {% endif %}
+    </div>
+
+
+</div>
+
+{% endblock %}

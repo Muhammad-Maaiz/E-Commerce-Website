@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Products | Bazixo
+    Products | Cartobuz
 {% endblock %}
 
 {% block css %}
@@ -10,41 +10,80 @@
 {% endblock %}
 
 {% block content %}
-    
+
 <!-- Products Section -->
 <section class="products container mt-5">
     <h2 class="text-center mb-4">Products</h2>
     <div class="row">
-        <!-- Loop through products -->
         {% for product in products %}
         <div class="col-md-4 mb-4">
             <div class="card product-card">
                 <img src="/media/{{ product.image1 }}" class="card-img-top" alt="{{ product.name }}">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="card-title">{{ product.name|truncatechars:15 }}</h5>
-                        <div class="icon-container">
-                            <a href="{% url 'product_details' product.id %}">
-                            <i class="fa fa-eye icon-eye" title="View Details"></i>
-                            </a>
-                            <a href="{% url 'add_to_wishlist' product.id %}">
-                                <i class="fa fa-heart icon-heart" title="Add to Wishlist"></i>
-                            </a>
-                        </div>
+                    
+                    <h5 class="card-title product-name" data-fullname="{{ product.name }}">{{ product.name }}</h5>
+
+                    <div class="rating">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= product.average_rating %}
+                                <i class="fa fa-star star-gold"></i>
+                            {% else %}
+                                <i class="fa fa-star star-grey"></i>
+                            {% endif %}
+                        {% endfor %}
+                        <span>({{ product.average_rating }}/5)</span>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <p class="card-text">Price: {{ product.selling_price }}</p>
-                        <p class="card-text">Category: {{ product.category.name }}</p>
+
+                    <p class="product-price">Price: {{ product.selling_price }}</p>
+                    
+                    <!-- Buttons (View & Wishlist) -->
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="{% url 'product_details' product.id %}" class="btn view-btn">View more</a>
+                        <a href="{% url 'add_to_wishlist' product.id %}">
+                            <i class="fa fa-heart icon-heart" title="Add to Wishlist"></i>
+                        </a>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <a href="{% url 'add_to_cart' product.id %}" class="btn card-btns">Add To Cart</a>
-                        <a href="{% url 'buy_now' product.id %}" class="btn card-btns">Buy Now</a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+    
+    <!-- JS for name -->
+    <script>
+        function truncateProductNames() {
+            let screenWidth = window.innerWidth;
+            let productNames = document.querySelectorAll(".product-name");
+        
+            productNames.forEach(function (element) {
+                let fullName = element.getAttribute("data-fullname");
+        
+                if (screenWidth >= 768 && screenWidth <= 1024) {
+                    // Tablet/iPad screen: max 8 characters
+                    if (fullName.length > 8) {
+                        element.textContent = fullName.substring(0, 8) + "...";
+                    }
+                } else if (screenWidth >= 1025) {
+                    // Laptop screen: max 15 characters
+                    if (fullName.length > 15) {
+                        element.textContent = fullName.substring(0, 15) + "...";
+                    }
+                } else {
+                    // Mobile screens: Full name
+                    element.textContent = fullName;
+                }
+            });
+        }
+        
+        // Pehli dafa function call karna
+        truncateProductNames();
+        
+        // Jab screen resize ho toh dobara function chale
+        window.addEventListener("resize", truncateProductNames);        
+    </script>
+
+
 </section>
 
 {% endblock %}

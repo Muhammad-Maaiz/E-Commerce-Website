@@ -206,20 +206,40 @@ header {
 }
 
 
-/* Product Card */
-.product-card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px var(--shadow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 15px;
+/* Cards */
+.card {
+    margin-bottom: 2rem;
 }
 
 .product-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
+    width: 100%; /* Ensures the image spans the width of the card */
+    height: 250px; /* Set a fixed height */
+    object-fit: cover; /* Ensures the image maintains aspect ratio and fills the area */
+}
+
+.product-card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.product-card p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-top: 10px;
+}
+
+.card-btns {
+    margin-bottom: 10px;
+    width: 120px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .product-card:hover {
@@ -227,110 +247,41 @@ header {
     box-shadow: 0 8px 16px var(--shadow-color);
 }
 
-/* Product Details */
-.card-body {
-    padding: 15px 10px;
-    text-align: left;
-}
-
-.card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-.rating {
-    font-size: 1rem;
-    color: var(--accent-color);
+.icon-container {
     display: flex;
     align-items: center;
-    margin: 5px 0;
+    gap: 23px;
 }
 
-.star-gold {
-    color: gold;
-}
-
-.star-grey {
-    color: lightgray;
-}
-
-.product-price {
-    font-size: 1rem;
-    color: var(--primary-color);
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-/* Buttons */
-.view-btn {
-    background-color: var(--accent-color);
-    color: var(--text-light);
-    border-radius: 5px;
-    padding: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.view-btn:hover {
-    background-color: var(--hover-color);
-    color: var(--text-dark);
-    transform: scale(1.05);
-}
-
-/* Heart Icon Styling */
-.icon-heart {
-    font-size: 1.6rem;
-    color: rgb(254, 54, 54);
+.icon-container i {
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgb(254, 54, 54); /* Border added */
-    border-radius: 5px;
-    padding: 5px;
+    font-size: 1.6rem; /* Increased icon size */
+    transition: color 0.3s ease;
 }
 
-/* Hover Effect */
+.icon-eye {
+    color: brown;
+}
+
+.icon-eye:hover {
+    color: darkorange; /* Hover color for eye icon */
+}
+
+.icon-heart {
+    color: red;
+}
+
 .icon-heart:hover {
-    color: white; /* Icon turns white */
-    background-color: rgb(254, 54, 54); 
+    color: rgb(235, 72, 72); /* Hover color for heart icon */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .product-card {
-        margin-bottom: 20px;
-    }
-
-    .view-btn {
-        text-align: center;
-    }
-
-    .icon-heart {
-        font-size: 1.8rem;
-    }
+.card-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensures name and icons are perfectly aligned */
+    margin-top: 10px;
+    margin-bottom: 0; /* Removes extra spacing */
 }
-
-@media (max-width: 480px) {
-    .card-title {
-        font-size: 1.2rem;
-    }
-
-    .rating {
-        font-size: 0.9rem;
-    }
-
-    .product-price {
-        font-size: 1rem;
-    }
-
-    .view-btn {
-        padding: 8px 15px;
-    }
-
-    .icon-heart {
-        font-size: 1.5rem;
-    }
-}
-
 
 
 /* Footer */
