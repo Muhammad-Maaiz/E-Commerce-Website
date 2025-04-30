@@ -45,7 +45,7 @@
         </p>
 
         <p class="product-description">{{ product.description | linebreaks }}</p>
-        <p class="product-price">Price: {{ product.selling_price }}</p>
+        <p class="product-price">Price: {{ product.selling_price }} Rs</p>
 
         <div class="product-attributes">
             <ul>
@@ -87,7 +87,7 @@
                         {% if forloop.counter <= review.rating %}
                             <i class="fa fa-star star-gold"></i>
                         {% else %}
-                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star star"></i>
                         {% endif %}
                     {% endfor %}
                 </p>

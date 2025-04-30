@@ -45,7 +45,7 @@ button,
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover,
+/* button:hover, */
 .btn:hover,
 .card-btns:hover,
 .subscribe:hover {
@@ -205,14 +205,60 @@ header {
     color: var(--accent-color);
 }
 
-
-/* Hero Section */
-.hero {
-    background: url('https://via.placeholder.com/1500x700') center/cover no-repeat;
-    color: var(--text-light);
+/* Hero Slider Images */
+.hero-img {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  /* Caption Overlay */
+  .carousel-caption {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--shadow-color); /* Dark transparent overlay */
+    color: var(--secondary-color);
     text-align: center;
-    padding: 6rem 1rem;
-}
+    padding: 2rem;
+    z-index: 10;
+  }
+  
+  /* Heading and Paragraph Styling */
+  .carousel-caption h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .carousel-caption p {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .hero-img {
+      height: 400px;
+    }
+  
+    .carousel-caption h1 {
+      font-size: 2rem;
+    }
+  
+    .carousel-caption p {
+      font-size: 1rem;
+    }
+  
+    .btn-lg {
+      font-size: 1rem;
+      padding: 0.6rem 1.4rem;
+    }
+  }
+  
+
 
 /* Product Card */
 .product-card {
@@ -340,32 +386,62 @@ header {
 }
 
 
-
-/* Faq section styling */
+/* FAQs Section */
 .accordion-item {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-dark); /* Dark text color for readability */
+    border: none;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    border-radius: 8px;
+    overflow: hidden;
     margin-bottom: 40px;
-    /* Adjust this value for more or less space */
 }
 
-.accordion-body {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-dark); /* Dark text color for readability */
-    margin-top: 10px;
-    /* Adjust this value for spacing between question and answer */
-}
-
+/* Default state (closed questions) */
 .accordion-button {
     background-color: var(--secondary-color);
     color: var(--text-dark);
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
+/* Jab kisi par click ho aur open ho jaye, to accent-color ho jaye */
 .accordion-button:not(.collapsed) {
     background-color: var(--accent-color);
     color: var(--text-light);
+}
+
+/* Jab koi aur question open ho aur ek new question click karein to woh bhi accent ho */
+.accordion-button:focus {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+}
+
+
+
+/* Remove Bootstrap's default arrow styles */
+.accordion-button::after {
+    flex-shrink: 0;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    content: "\f067"; /* Font Awesome plus */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    background-image: none !important; /* Disable Bootstrap arrow */
+    transform: none !important;
+}
+
+/* Open state — show minus */
+.accordion-button:not(.collapsed)::after {
+    content: "\f068"; /* Font Awesome minus */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+/* Answer body styling */
+.accordion-body {
+    background: var(--secondary-color);
+    padding: 15px;
+    font-size: 1rem;
 }
 
 

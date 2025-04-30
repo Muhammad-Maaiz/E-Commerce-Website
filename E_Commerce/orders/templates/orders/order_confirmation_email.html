@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cartobuz - Order Confirmation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr>
+            <td align="center">
+                <table role="presentation" width="550" border="0" cellspacing="0" cellpadding="0" style="background: #FFFFFF; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); border-radius: 12px; padding: 20px; border-top: 5px solid #FF9800; border-bottom: 0.4px solid rgba(0, 0, 0, 0.3); border-left: 0.4px solid rgba(0, 0, 0, 0.3); border-right: 0.4px solid rgba(0, 0, 0, 0.3);">
+                    <tr>
+                        <td align="center" style="padding-bottom: 20px;">
+                            <img src="https://192.168.0.103:5000/static/images/cartobuz_logo.png" alt="Cartobuz Logo" style="max-width: 150px;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2 style="font-size: 1.7rem; color: #3d4242; font-weight: bold;">Your Order is Confirmed</h2>
+                            <p style="font-size: 16px; color: #333333; line-height: 1.6;">Dear {{username}},</p>
+                            <p style="font-size: 16px; color: #333333; line-height: 1.6;">We are delighted to inform you that your order has been successfully placed! Our team is now processing your order with care to ensure a smooth and timely delivery.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="background-color: #FFC247; color: #3d4242; font-size: 16px; font-weight: 600; padding: 12px; border-radius: 8px; margin: 15px 0;">
+                            Order ID: <strong>#{{order_id}}</strong><br>
+                            Estimated Delivery: <strong>2-3 Business Days</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-size: 16px; color: #333333; line-height: 1.6;">You can track your order and view all details by clicking the button below:</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding: 20px;">
+                            <a href="#" style="display: inline-block; padding: 10px 20px; background-color: #FF9800; color: #FFFFFF; text-decoration: none; border-radius: 5px; font-size: 1rem; transition: background-color 0.3s ease, color 0.3s ease;" 
+                            onmouseover="this.style.backgroundColor='#FFC247'; this.style.color='#333333'" 
+                            onmouseout="this.style.backgroundColor='#FF9800'; this.style.color='#FFFFFF'">
+                            View Your Order
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-size: 16px; color: #333333; line-height: 1.6;">Thank you for shopping with <strong>Cartobuz</strong>. We appreciate your trust in us and look forward to serving you again!</p>
+                            <p style="font-size: 16px; color: #333333; line-height: 1.6;">If you have any questions or need assistance, our support team is always here to help.</p>
+                            <p style="font-size: 16px; color: #333333; line-height: 1.6;">Best Regards,<br><strong>Cartobuz Team</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="margin-top: 30px; font-size: 13px; color: #333333; border-top: 1px solid rgba(0, 0, 0, 0.4); padding-top: 10px;">
+                            <p style="font-size: 16px; color: #333333">Need help? Contact us:</p>
+                            <tr>
+                                <td align="center">
+                                    <table role="presentation" cellspacing="10" cellpadding="10" border="0" style="margin-top: 5px;">
+                                        <tr>
+                                            <!-- Email -->
+                                            <td align="center" style="background-color: #D14836; width: 30px; height: 30px; border-radius: 50%;">
+                                                <a href="mailto:support@cartobuz.com" style="color: white; font-size: 16px; font-weight: bold; display: inline-block; width: 30px; height: 30px; line-height: 30px; text-align: center; text-decoration: none;">
+                                                    ✉
+                                                </a>
+                                            </td>
+                                            <!-- Facebook -->
+                                            <td align="center" style="background-color: #3B5998; width: 30px; height: 30px; border-radius: 50%;">
+                                                <a href="https://www.facebook.com/cartobuz" style="color: white; font-size: 16px; font-weight: bold; display: inline-block; width: 30px; height: 30px; line-height: 30px; text-align: center; text-decoration: none;">
+                                                    𝗳
+                                                </a>
+                                            </td>
+                                            <!-- Instagram -->
+                                            <td align="center" style="background-color: #C13584; width: 30px; height: 30px; border-radius: 50%;">
+                                                <a href="https://www.instagram.com/cartobuz" style="color: white; font-size: 16px; font-weight: bold; display: inline-block; width: 30px; height: 30px; line-height: 30px; text-align: center; text-decoration: none;">
+                                                    𝒊𝒏𝒔𝒕𝒂
+                                                </a>
+                                            </td>
+                                            <!-- Website -->
+                                            <td align="center" style="background-color: #0088CC; width: 30px; height: 30px; border-radius: 50%;">
+                                                <a href="https://www.cartobuz.com" style="color: white; font-size: 16px; font-weight: bold; display: inline-block; width: 30px; height: 30px; line-height: 30px; text-align: center; text-decoration: none;">
+                                                    🌐
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            
+                            <p style="font-size: 16px; color: #333333; text-align: center;">&copy; 2025 Cartobuz. All rights reserved.</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

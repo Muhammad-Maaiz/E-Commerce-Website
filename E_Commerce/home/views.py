@@ -14,9 +14,20 @@ def home(request):
     # Get all Trending products
     trending_products = Product.objects.filter(is_trending=True)
 
+    try:
+        clothes_category_obj = Category.objects.get(name="Clothes")
+        clothes_category = Product.objects.filter(category=clothes_category_obj)
+        electronics_category_obj = Category.objects.get(name="Electronics")
+        electronics_category = Product.objects.filter(category=electronics_category_obj)
+    except Category.DoesNotExist:
+        clothes_category = []
+        electronics_category = []
+
     context = {
         'featured_products': featured_products,
         'trending_products': trending_products,
+        'clothes_category': clothes_category,
+        'electronics_category': electronics_category,
         }
 
     return render(request, "home/home.html", context)
